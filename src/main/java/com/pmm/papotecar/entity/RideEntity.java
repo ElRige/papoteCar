@@ -1,5 +1,6 @@
 package com.pmm.papotecar.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,10 +15,13 @@ public class RideEntity {
 
     @Id
     @GeneratedValue
-    private long id;
+    @Column(name = "id_ride")
+    private long rideId;
+    @Column(name = "id_user")
     private long driverId;
     private String state;
     private String description;
-    private String seatingCapacity;
-    private String price;
+    @Column(name = "place")
+    private int seatingCapacity;
+    private int price;
 }

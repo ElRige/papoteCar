@@ -10,12 +10,12 @@ public class Ride {
     private long id;
     private String state;
     private String description;
-    private String seatingCapacity;
-    private String price;
+    private int seatingCapacity;
+    private int price;
     private User driver;
     private List<User> pools;
 
-    public Ride(long id, String state, String description, String seatingCapacity, String price, User driver,
+    public Ride(long id, String state, String description, int seatingCapacity, int price, User driver,
 	    List<User> pools) {
 	this.id = id;
 	this.state = state;

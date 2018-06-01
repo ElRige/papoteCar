@@ -14,9 +14,9 @@ public class CarEntity {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int carId;
     private int userId;
-    private String seatingCapacity;
+    private int seatingCapacity;
     private String color;
     private String model;
     private String urlPicture;

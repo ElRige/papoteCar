@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RideRepository extends JpaRepository<RideEntity, Long> {
 
-    List<RideEntity> findByDriverId(int userId);
+    List<RideEntity> findByDriverId(long driverId);
 }

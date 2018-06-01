@@ -1,5 +1,7 @@
 package com.pmm.papotecar.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,8 +16,8 @@ public class StepEntity {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int stepId;
     private int rideId;
     private String city;
-    private String stepDate;
+    private Date stepDate;
 }

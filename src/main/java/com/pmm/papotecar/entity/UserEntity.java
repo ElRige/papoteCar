@@ -1,5 +1,8 @@
 package com.pmm.papotecar.entity;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,10 +17,12 @@ public class UserEntity {
 
     @Id
     @GeneratedValue
-    private int id;
+    @Column(name = "id_user")
+    private int userId;
     private String email;
+    private String password;
     private String firstname;
     private String lastname;
-    private String birthdate;
+    private Date birthdate;
     private String gender;
 }

@@ -3,9 +3,12 @@ package com.pmm.papotecar.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.pmm.papotecar.entity.RideEntity;
 import com.pmm.papotecar.entity.RideRepository;
 
+@Service
 public class RideService {
 
     private RideRepository rideRepository;
@@ -16,16 +19,30 @@ public class RideService {
 	this.userService = userService;
     }
 
-    public Ride getRide(long rideId) {
-	return map(rideRepository.getOne(rideId));
-    }
-
-    public List<Ride> getRideByDriver(User driver) {
+    public List<Ride> getRidesByDriver(User driver) {
 
 	List<RideEntity> rideEntities = rideRepository.findByDriverId(driver.getId());
 
 	return map(rideEntities, driver);
 
+    }
+
+    public Ride getRide(long rideId) {
+	return map(rideRepository.getOne(rideId));
+    }
+
+    public Ride createRide(Ride ride) {
+	// TODO createRide
+	return null;
+    }
+
+    public Ride updateRide(Ride ride) {
+	// TODO updateRide
+	return null;
+    }
+
+    public void deleteRide(long rideId) {
+	// TODO deleteRide
     }
 
     private List<Ride> map(List<RideEntity> rideEntities, User driver) {
@@ -38,14 +55,14 @@ public class RideService {
 
     private Ride map(RideEntity rideEntity) {
 
-	User driver = userService.getUserById(rideEntity.getDriverId());
+	User driver = userService.getUser(rideEntity.getDriverId());
 	return map(rideEntity, driver);
     }
 
     private Ride map(RideEntity rideEntity, User driver) {
 
-	List<User> pools = userService.getUserByRideId(rideEntity.getId());
-	return new Ride(rideEntity.getId(), rideEntity.getState(), rideEntity.getDescription(),
+	List<User> pools = userService.getUserByRideId(rideEntity.getRideId());
+	return new Ride(rideEntity.getRideId(), rideEntity.getState(), rideEntity.getDescription(),
 		rideEntity.getSeatingCapacity(), rideEntity.getPrice(), driver, pools);
     }
 
