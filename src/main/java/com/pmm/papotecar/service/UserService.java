@@ -38,14 +38,14 @@ public class UserService {
 	// TODO deleteUser
     }
 
-    public List<User> getUserByRideId(Long rideId) {
+    public List<User> getUsersByRideId(Long rideId) {
 
 	// List<UserEntity> userEntities = userRepository.findByRideId(rideId);
 	// return map(userEntities);
 	return null;
     }
 
-    public List<User> map(List<UserEntity> userEntities) {
+    List<User> map(List<UserEntity> userEntities) {
 	List<User> users = new ArrayList<>();
 	for (UserEntity userEntity : userEntities) {
 	    users.add(map(userEntity));

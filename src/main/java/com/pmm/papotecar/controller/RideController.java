@@ -1,6 +1,5 @@
 package com.pmm.papotecar.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pmm.papotecar.service.Ride;
 import com.pmm.papotecar.service.RideService;
-import com.pmm.papotecar.service.User;
 
 @RestController
 @RequestMapping(value = "/rides")
@@ -27,16 +25,8 @@ public class RideController {
     @GetMapping
     List<Ride> getRides() {
 
-	User driver = new User(1, "test@mail.com", "test", "test", "test", new Date(), "test");
-
-	return rideService.getRidesByDriver(driver);
+	return rideService.getRides();
     }
-
-    // @GetMapping
-    // List<Ride> getRides(@RequestParam(value = "driver") User driver) {
-    //
-    // return rideService.getRidesByDriver(driver);
-    // }
 
     @RequestMapping(value = "/{rideId}", method = RequestMethod.GET)
     Ride getRide(@PathVariable long rideId) {

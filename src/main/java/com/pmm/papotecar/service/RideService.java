@@ -19,6 +19,11 @@ public class RideService {
 	this.userService = userService;
     }
 
+    public List<Ride> getRides() {
+
+	return map(rideRepository.findAll());
+    }
+
     public List<Ride> getRidesByDriver(User driver) {
 
 	List<RideEntity> rideEntities = rideRepository.findByDriverId(driver.getId());
@@ -45,6 +50,10 @@ public class RideService {
 	// TODO deleteRide
     }
 
+    private List<Ride> map(List<RideEntity> rideEntities) {
+	return map(rideEntities, null);
+    }
+
     private List<Ride> map(List<RideEntity> rideEntities, User driver) {
 	List<Ride> rides = new ArrayList<>();
 	for (RideEntity rideEntity : rideEntities) {
@@ -62,6 +71,10 @@ public class RideService {
     private Ride map(RideEntity rideEntity, User driver) {
 
 	List<User> carpoolers = userService.map(rideEntity.getCarpoolers());
+	if (driver == null) {
+	    driver = userService.getUser(rideEntity.getDriverId());
+	}
+
 	return new Ride(rideEntity.getRideId(), rideEntity.getState(), rideEntity.getDescription(),
 		rideEntity.getSeatingCapacity(), rideEntity.getPrice(), driver, carpoolers);
     }
