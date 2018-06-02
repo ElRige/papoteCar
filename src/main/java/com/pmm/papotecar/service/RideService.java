@@ -61,9 +61,9 @@ public class RideService {
 
     private Ride map(RideEntity rideEntity, User driver) {
 
-	List<User> pools = userService.getUserByRideId(rideEntity.getRideId());
+	List<User> carpoolers = userService.map(rideEntity.getCarpoolers());
 	return new Ride(rideEntity.getRideId(), rideEntity.getState(), rideEntity.getDescription(),
-		rideEntity.getSeatingCapacity(), rideEntity.getPrice(), driver, pools);
+		rideEntity.getSeatingCapacity(), rideEntity.getPrice(), driver, carpoolers);
     }
 
 }

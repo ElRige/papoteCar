@@ -16,8 +16,8 @@ public class StepEntity {
 
     @Id
     @GeneratedValue
-    private int stepId;
-    private int rideId;
+    private long stepId;
+    private long rideId;
     private String city;
     private Date stepDate;
 }

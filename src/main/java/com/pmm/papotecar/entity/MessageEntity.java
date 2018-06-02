@@ -16,9 +16,9 @@ public class MessageEntity {
 
     @Id
     @GeneratedValue
-    private int messageId;
-    private int userId;
-    private int rideId;
+    private long messageId;
+    private long userId;
+    private long rideId;
     private String content;
     private Date dateMessage;
 }

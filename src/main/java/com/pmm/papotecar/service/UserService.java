@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.inject.Inject;
-
 import org.springframework.stereotype.Service;
 
 import com.pmm.papotecar.entity.UserEntity;
@@ -16,7 +14,6 @@ public class UserService {
 
     private UserRepository userRepository;
 
-    @Inject
     public UserService(UserRepository userRepository) {
 	this.userRepository = userRepository;
     }
@@ -48,7 +45,7 @@ public class UserService {
 	return null;
     }
 
-    private List<User> map(List<UserEntity> userEntities) {
+    public List<User> map(List<UserEntity> userEntities) {
 	List<User> users = new ArrayList<>();
 	for (UserEntity userEntity : userEntities) {
 	    users.add(map(userEntity));

@@ -18,7 +18,7 @@ public class UserEntity {
     @Id
     @GeneratedValue
     @Column(name = "id_user")
-    private int userId;
+    private long userId;
     private String email;
     private String password;
     private String firstname;

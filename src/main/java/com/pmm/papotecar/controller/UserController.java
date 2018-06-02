@@ -10,7 +10,7 @@ import com.pmm.papotecar.service.User;
 import com.pmm.papotecar.service.UserService;
 
 @RestController
-@RequestMapping(value = "/users", produces = "application/json", consumes = "application/json")
+@RequestMapping(value = "/users")
 public class UserController {
 
     private UserService userService;
@@ -20,27 +20,27 @@ public class UserController {
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
-    User getRide(@PathVariable long rideId) {
+    User getRide(@PathVariable long userId) {
 
-	return userService.getUser(rideId);
+	return userService.getUser(userId);
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.POST)
-    User createRide(@PathVariable long rideId, @RequestParam(value = "ride") User user) {
+    User createRide(@PathVariable long userId, @RequestParam(value = "user") User user) {
 
 	return userService.createUser(user);
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.PUT)
-    User updateRide(@RequestParam(value = "ride") User user) {
+    User updateRide(@RequestParam(value = "user") User user) {
 
 	return userService.updateUser(user);
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
-    void deleteRide(@PathVariable long rideId) {
+    void deleteRide(@PathVariable long userId) {
 
-	userService.deleteUser(rideId);
+	userService.deleteUser(userId);
     }
 
 }
