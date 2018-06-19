@@ -2,7 +2,6 @@ package com.pmm.papotecar.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,7 +12,7 @@ import com.pmm.papotecar.service.Ride;
 import com.pmm.papotecar.service.RideService;
 
 @RestController
-@RequestMapping(value = "/rides")
+@RequestMapping(value = "/rides", produces = "application/json")
 public class RideController {
 
     private RideService rideService;
@@ -22,8 +21,10 @@ public class RideController {
 	this.rideService = rideService;
     }
 
-    @GetMapping
+    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     List<Ride> getRides() {
+
+	System.out.println("getRides");
 
 	return rideService.getRides();
     }
